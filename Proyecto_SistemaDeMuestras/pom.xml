@@ -21,7 +21,20 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Dependencia del driver JDBC de MySQL -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version> <!-- Usar la versión disponible y correcta -->
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
