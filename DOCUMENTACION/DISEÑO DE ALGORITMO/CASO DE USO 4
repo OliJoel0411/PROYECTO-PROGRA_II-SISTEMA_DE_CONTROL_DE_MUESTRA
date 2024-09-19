@@ -1,0 +1,49 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Mantenimiento de Usuarios]
+    D --> E[Listado de Usuarios]
+    E --> F{Opciones Disponibles}
+    
+    %% Opciones en Mantenimiento de Usuarios
+    F --> G1[Agregar Usuario]
+    F --> G2[Modificar Usuario]
+    F --> G3[Cambiar Estado de Usuario]
+    
+    %% Flujo de Agregar Usuario
+    G1 --> H1[Ingresar Datos del Usuario]
+    H1 --> I1[Validar Campos Obligatorios]
+    I1 --> J1[Guardar Nuevo Usuario]
+    J1 --> K1[Registro en Bitácora]
+    K1 --> L1[Mensaje de Éxito]
+    L1 --> E
+    
+    %% Flujo de Modificar Usuario
+    G2 --> H2[Seleccionar Usuario a Modificar]
+    H2 --> I2[Modificar Datos del Usuario]
+    I2 --> J2[Validar Campos Obligatorios]
+    J2 --> K2[Guardar Cambios]
+    K2 --> L2[Registro en Bitácora]
+    L2 --> M2[Mensaje de Éxito]
+    M2 --> E
+    
+    %% Flujo de Cambiar Estado de Usuario
+    G3 --> H3[Seleccionar Usuario a Cambiar Estado]
+    H3 --> I3[Seleccionar Nuevo Estado y Motivo]
+    I3 --> J3[Reasignar Solicitudes 'Opcional']
+    J3 --> K3[Guardar Cambios]
+    K3 --> L3[Registro en Bitácora]
+    L3 --> M3[Mensaje de Éxito]
+    M3 --> E
+    
+    %% Flujos Alternos
+    %% FA01: No existen usuarios
+    E --> FA1{¿Hay Usuarios?}
+    FA1 -- No --> M1[Mensaje: No hay usuarios disponibles]
+    M1 --> End1[Fin del flujo]
+    FA1 -- Sí --> F
+    
+    %% FA02: Cancelar Acción
+    F --> FA2[Opción: Cancelar]
+    FA2 --> E[Listado de Usuarios]

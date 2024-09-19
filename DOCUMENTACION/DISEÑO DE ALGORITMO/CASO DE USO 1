@@ -1,0 +1,57 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Recepción de Solicitud]
+    D --> E[Listado de Solicitudes]
+    E --> F{Opciones Disponibles}
+    
+    %% Opciones dentro del flujo básico
+    F --> G1[Confirmar Traslado]
+    F --> G2[Analizar Muestra]
+    F --> G3[Analizar Porción de Muestra]
+    
+    %% Flujo de Confirmar Traslado
+    G1 --> H1[Cambio de Estado de la Solicitud]
+    H1 --> I1[Registro en Bitácora]
+    I1 --> J1[Mensaje de Éxito]
+    J1 --> E
+    
+    %% Flujo de Analizar Muestra
+    G2 --> H2[Mostrar Detalles de la Solicitud]
+    H2 --> I2[Campos Habilitados para el Análisis]
+    I2 --> J2[Cambio de Estado de la Solicitud]
+    J2 --> K2[Registro en Bitácora]
+    K2 --> L2[Mensaje de Éxito]
+    L2 --> E
+    
+    %% Flujo de Analizar Porción de Muestra
+    G3 --> H3[Validar Si Hay Porción de Muestra]
+    H3 --> I3[Crear Porción de Muestra]
+    I3 --> J3[Cambio de Estado de la Porción]
+    J3 --> K3[Registro en Bitácora]
+    K3 --> L3[Mensaje de Éxito]
+    L3 --> E
+
+    %% Flujos Alternos
+    %% FA01: No existen solicitudes
+    E --> FA1{¿Hay Solicitudes?}
+    FA1 -- No --> M1[Mensaje: No hay solicitudes para revisión]
+    M1 --> End1[Fin del flujo]
+    FA1 -- Sí --> F
+    
+    %% FA02: Selecciona opción "No"
+    F --> FA2[Opción: No]
+    FA2 --> E[Listado de Solicitudes]
+    
+    %% FA03: Selecciona opción "Cancelar"
+    F --> FA3[Opción: Cancelar]
+    FA3 --> E[Listado de Solicitudes]
+    
+    %% FA06: Opción "Analizar Muestra"
+    G2 --> FA6_1[Mostrar Detalles de la Muestra]
+    FA6_1 --> FA6_2[Habilitar Campos]
+    FA6_2 --> FA6_3[Acción: Devolución al Solicitante]
+    FA6_3 --> FA6_4[Cambio de Estado a Devuelta]
+    FA6_4 --> FA6_5[Mensaje de Éxito]
+    FA6_5 --> E[Listado de Solicitudes]

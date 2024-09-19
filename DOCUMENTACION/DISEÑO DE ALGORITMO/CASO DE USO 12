@@ -1,0 +1,23 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Visualización de Solicitudes]
+    D --> E[Ingresar Parámetros de Búsqueda]
+    E --> F[Validar Parámetros Ingresados]
+    F --> G[Buscar Solicitudes]
+    G --> H{¿Existen Resultados?}
+    H -- Sí --> I[Mostrar Resultados]
+    I --> J[Seleccionar Solicitud]
+    J --> K[Mostrar Documentos de la Solicitud]
+    K --> L[Permitir Descargar Documentos]
+    L --> M[Usuario Descarga los Documentos]
+    M --> N[Fin del Proceso]
+
+    %% Flujos Alternos
+    H -- No --> FA1[Mostrar Mensaje: No se encontraron solicitudes]
+    FA1 --> N[Fin del Proceso]
+
+    %% FA02: Cancelar Acción
+    D --> FA2[Opción: Cancelar]
+    FA2 --> N

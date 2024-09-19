@@ -1,0 +1,22 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Recepción de Solicitud]
+    B --> C[Aplicar Regla de Negocio]
+    C --> D{¿Regla Aplicada Correctamente?}
+    
+    D -- Sí --> E[Realizar Validaciones]
+    E --> F{¿Validación Exitosa?}
+    F -- Sí --> G[Devolver Información al Sistema]
+    G --> H[Continuar Proceso de Solicitud]
+    H --> I[Fin del Proceso]
+
+    F -- No --> FA1[Mostrar Mensaje de Error]
+    FA1 --> I
+
+    D -- No --> FA2[Mostrar Mensaje: Error en la Aplicación de la Regla]
+    FA2 --> I
+
+    %% Flujos Alternos
+    %% FA03: Cancelar Acción
+    B --> FA3[Opción: Cancelar]
+    FA3 --> I

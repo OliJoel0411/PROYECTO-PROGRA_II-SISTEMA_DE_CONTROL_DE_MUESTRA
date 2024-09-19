@@ -1,0 +1,73 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Recepción de Solicitud]
+    D --> E[Listado de Solicitudes]
+    E --> F{Opciones Disponibles}
+    
+    %% Opciones en la Bandeja de Almacenamiento
+    F --> G1[Confirmar Traslado]
+    F --> G2[Rechazo de Muestra]
+    F --> G3[Notificar Muestra]
+    F --> G4[Devolución de Muestra]
+    F --> G5[Destruir Muestra]
+    F --> G6[Destruir Porción de Muestra]
+    
+    %% Flujo de Confirmar Traslado
+    G1 --> H1[Cambio de Estado a 'En Bodega']
+    H1 --> I1[Registro en Bitácora]
+    I1 --> J1[Mensaje de Éxito]
+    J1 --> E
+    
+    %% Flujo de Rechazo de Muestra
+    G2 --> H2[Motivo de Rechazo]
+    H2 --> I2[Asignar Analista de Laboratorio]
+    I2 --> J2[Cambio de Estado a 'Rechazada']
+    J2 --> K2[Asignar Estado 'Asignada Analista']
+    K2 --> L2[Enviar Notificación]
+    L2 --> M2[Mensaje de Éxito]
+    M2 --> E
+    
+    %% Flujo de Notificar Muestra
+    G3 --> H3[Adjuntar Carta y Notificación]
+    H3 --> I3[Validar Campos]
+    I3 --> J3[Cambio de Estado a 'En Notificación']
+    J3 --> K3[Enviar Correo Electrónico]
+    K3 --> L3[Registro en Bitácora]
+    L3 --> M3[Mensaje de Éxito]
+    M3 --> E
+    
+    %% Flujo de Devolución de Muestra
+    G4 --> H4[Adjuntar Constancia de Devolución]
+    H4 --> I4[Cambio de Estado a 'Devuelta']
+    I4 --> J4[Enviar Correo Electrónico]
+    J4 --> K4[Registro en Bitácora]
+    K4 --> L4[Mensaje de Éxito]
+    L4 --> E
+    
+    %% Flujo de Destruir Muestra
+    G5 --> H5[Confirmación de Destrucción]
+    H5 --> I5[Cambio de Estado a 'Destruida']
+    I5 --> J5[Enviar Correo Electrónico]
+    J5 --> K5[Registro en Bitácora]
+    K5 --> L5[Mensaje de Éxito]
+    L5 --> E
+    
+    %% Flujo de Destruir Porción de Muestra
+    G6 --> H6[Confirmación de Destrucción de Porción]
+    H6 --> I6[Cambio de Estado a 'Porción Destruida']
+    I6 --> J6[Registro en Bitácora]
+    J6 --> K6[Mensaje de Éxito]
+    K6 --> E
+
+    %% Flujos Alternos
+    %% FA01: No existen solicitudes
+    E --> FA1{¿Hay Solicitudes?}
+    FA1 -- No --> M1[Mensaje: No hay solicitudes para revisión]
+    M1 --> End1[Fin del flujo]
+    FA1 -- Sí --> F
+    
+    %% FA02: Selecciona opción "Cancelar"
+    F --> FA2[Opción: Cancelar]
+    FA2 --> E[Listado de Solicitudes]

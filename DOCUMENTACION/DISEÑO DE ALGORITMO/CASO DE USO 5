@@ -1,0 +1,24 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Reasignación de Solicitudes]
+    D --> E[Listado de Solicitudes]
+    E --> F[Seleccionar Solicitud a Reasignar]
+    F --> G[Seleccionar Nuevo Usuario]
+    G --> H[Validar Reasignación]
+    H --> I[Guardar Reasignación]
+    I --> J[Registro en Bitácora]
+    J --> K[Mensaje de Éxito]
+    K --> E
+    
+    %% Flujos Alternos
+    %% FA01: No existen solicitudes
+    E --> FA1{¿Hay Solicitudes?}
+    FA1 -- No --> M1[Mensaje: No hay solicitudes disponibles]
+    M1 --> End1[Fin del flujo]
+    FA1 -- Sí --> F
+    
+    %% FA02: Cancelar Acción
+    F --> FA2[Opción: Cancelar]
+    FA2 --> E[Listado de Solicitudes]
