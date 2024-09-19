@@ -4,9 +4,25 @@
         <servlet-name>pruebaConexion</servlet-name>
         <servlet-class>controlador.pruebaConexion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PanelServlet</servlet-name>
+        <servlet-class>controlador.PanelServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>controlador.TestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>pruebaConexion</servlet-name>
         <url-pattern>/pruebaConexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PanelServlet</servlet-name>
+        <url-pattern>/panel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
