@@ -1,0 +1,47 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Mantenimiento de Catálogos]
+    D --> E[Listado de Catálogos]
+    E --> F{Opciones Disponibles}
+    
+    %% Opciones en Mantenimiento de Catálogos
+    F --> G1[Agregar Catálogo]
+    F --> G2[Editar Catálogo]
+    F --> G3[Eliminar Catálogo]
+    
+    %% Flujo de Agregar Catálogo
+    G1 --> H1[Ingresar Datos del Catálogo]
+    H1 --> I1[Validar Campos Obligatorios]
+    I1 --> J1[Guardar Nueva Entrada]
+    J1 --> K1[Registro en Bitácora]
+    K1 --> L1[Mensaje de Éxito]
+    L1 --> E
+    
+    %% Flujo de Editar Catálogo
+    G2 --> H2[Seleccionar Catálogo a Editar]
+    H2 --> I2[Modificar Datos del Catálogo]
+    I2 --> J2[Validar Campos Obligatorios]
+    J2 --> K2[Guardar Cambios]
+    K2 --> L2[Registro en Bitácora]
+    L2 --> M2[Mensaje de Éxito]
+    M2 --> E
+    
+    %% Flujo de Eliminar Catálogo
+    G3 --> H3[Seleccionar Catálogo a Eliminar]
+    H3 --> I3[Confirmar Eliminación]
+    I3 --> J3[Registro en Bitácora]
+    J3 --> K3[Mensaje de Éxito]
+    K3 --> E
+    
+    %% Flujos Alternos
+    %% FA01: No existen catálogos
+    E --> FA1{¿Hay Catálogos?}
+    FA1 -- No --> M1[Mensaje: No hay catálogos disponibles]
+    M1 --> End1[Fin del flujo]
+    FA1 -- Sí --> F
+    
+    %% FA02: Cancelar Acción
+    F --> FA2[Opción: Cancelar]
+    FA2 --> E[Listado de Catálogos]

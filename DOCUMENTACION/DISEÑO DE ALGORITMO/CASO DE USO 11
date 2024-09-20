@@ -1,0 +1,31 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Reversión de Paso o Inactivación]
+    D --> E[Ingresar Número de Muestra]
+    E --> F[Validar Número de Muestra]
+    F --> G{¿Existe la Muestra?}
+    G -- Sí --> H[Mostrar Detalles de la Solicitud]
+    H --> I{¿Reversión de Paso o Inactivación?}
+    I -- Reversión de Paso --> J[Ingresar Motivo de Reversión]
+    J --> K[Seleccionar Nuevo Estado y Usuario Asignado]
+    K --> L[Guardar Cambios]
+    L --> M[Registro en Bitácora]
+    M --> N[Mensaje de Éxito]
+    N --> O[Fin del Proceso]
+
+    I -- Inactivación --> J2[Confirmar Inactivación]
+    J2 --> K2[Ingresar Motivo de Inactivación]
+    K2 --> L2[Guardar Cambios]
+    L2 --> M2[Registro en Bitácora]
+    M2 --> N2[Mensaje de Éxito]
+    N2 --> O
+    
+    %% Flujos Alternos
+    G -- No --> FA1[Mostrar Mensaje: Número de Muestra no Encontrado]
+    FA1 --> O
+
+    %% FA02: Cancelar Acción
+    D --> FA2[Opción: Cancelar]
+    FA2 --> O

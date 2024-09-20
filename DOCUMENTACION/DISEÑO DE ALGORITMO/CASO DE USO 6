@@ -1,0 +1,28 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Registro de Solicitud]
+    D --> E[Ingresar Datos de la Solicitud]
+    E --> F[Validar Campos Obligatorios]
+    F --> G[Generar Número de Solicitud]
+    G --> H[Guardar Solicitud]
+    H --> I[Registro en Bitácora]
+    I --> J[Mensaje de Éxito]
+    J --> K[Opción: Registrar Muestra]
+    K --> L[Ingresar Datos de la Muestra]
+    L --> M[Validar Campos Obligatorios]
+    M --> N[Generar Número de Muestra]
+    N --> O[Guardar Muestra]
+    O --> P[Registro en Bitácora]
+    P --> Q[Mensaje de Éxito]
+    Q --> R[Fin del Proceso]
+    
+    %% Flujos Alternos
+    %% FA01: Cancelar Registro de Solicitud
+    D --> FA1[Opción: Cancelar Registro de Solicitud]
+    FA1 --> R[Fin del Proceso]
+
+    %% FA02: Cancelar Registro de Muestra
+    K --> FA2[Opción: Cancelar Registro de Muestra]
+    FA2 --> R[Fin del Proceso]

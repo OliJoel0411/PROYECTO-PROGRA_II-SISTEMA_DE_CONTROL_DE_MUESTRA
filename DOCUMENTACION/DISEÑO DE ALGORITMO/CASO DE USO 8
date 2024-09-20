@@ -1,0 +1,23 @@
+flowchart TD
+    %% Flujo Básico
+    A[Inicio] --> B[Menú Principal]
+    B --> C[Ingreso al Sistema]
+    C --> D[Acceder a Reporte de Solicitudes Ingresadas]
+    D --> E[Ingresar Parámetros de Búsqueda]
+    E --> F[Validar Parámetros Ingresados]
+    F --> G[Buscar Solicitudes]
+    G --> H{¿Existen Resultados?}
+    H -- Sí --> I[Mostrar Resultados]
+    I --> J[Generar Reporte]
+    J --> K[Mostrar Reporte al Usuario]
+    K --> L[Opción: Exportar a Excel]
+    L --> M[Exportar Reporte]
+    M --> N[Fin del Proceso]
+    
+    %% Flujos Alternos
+    H -- No --> FA1[Mostrar Mensaje: No se encontraron resultados]
+    FA1 --> N[Fin del Proceso]
+
+    %% FA02: Cancelar Acción
+    D --> FA2[Opción: Cancelar]
+    FA2 --> N[Fin del Proceso]
